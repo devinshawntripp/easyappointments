@@ -25,5 +25,8 @@ RUN apt-get update \
     && apt-get -y autoremove \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+COPY ./docker/php-fpm/start-container /usr/local/bin/start-container
+RUN chmod +x /usr/local/bin/start-container
 
-CMD ["bash", "docker/php-fpm/start-container"]
+
+CMD ["bash", "/usr/local/bin/start-container"]
