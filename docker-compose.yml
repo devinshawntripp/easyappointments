@@ -8,15 +8,6 @@ services:
       - '.:/var/www/html'
       - './docker/php-fpm/php-ini-overrides.ini:/usr/local/etc/php/conf.d/99-overrides.ini'
 
-  nginx:
-    image: 'nginx:1.23.3-alpine'
-    working_dir: /var/www/html
-    volumes:
-      - '.:/var/www/html'
-      - './docker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf'
-    ports:
-      - '8081:80'  # Changed from 80:80 to 8081:80 to avoid conflict
-
   mysql:
     image: 'mysql:8.0'
     volumes:
